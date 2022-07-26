@@ -1,5 +1,6 @@
 ﻿using Back_End_Final_Project.DAL;
 using Back_End_Final_Project.Models;
+using Back_End_Final_Project.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,12 @@ namespace Back_End_Final_Project.Controllers
 
         public IActionResult Index()
         {
-            List<Slider> sliders = _context.Sliders.ToList();
-            return View(sliders);
+            HomeVM homeVM = new HomeVM
+            {
+                Sliders = _context.Sliders.ToList(),
+                Categories = _context.Categories.ToList()
+            };
+             return View(homeVM);
         }
     }
 }

@@ -8480,11 +8480,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\3.Asp.Net.Core\\Back-End Final Project\\Back-End Final Project\\Back-End Final Project.csproj",
+      "projectUniqueName": "E:\\3.Asp.Net.Core\\Back-End Final Project\\Back-End Final Project\\Back-End Final Project\\Back-End Final Project.csproj",
       "projectName": "Back-End Final Project",
-      "projectPath": "E:\\3.Asp.Net.Core\\Back-End Final Project\\Back-End Final Project\\Back-End Final Project.csproj",
+      "projectPath": "E:\\3.Asp.Net.Core\\Back-End Final Project\\Back-End Final Project\\Back-End Final Project\\Back-End Final Project.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "E:\\3.Asp.Net.Core\\Back-End Final Project\\Back-End Final Project\\obj\\",
+      "outputPath": "E:\\3.Asp.Net.Core\\Back-End Final Project\\Back-End Final Project\\Back-End Final Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

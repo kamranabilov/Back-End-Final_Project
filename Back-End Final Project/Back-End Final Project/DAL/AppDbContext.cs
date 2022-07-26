@@ -15,6 +15,10 @@ namespace Back_End_Final_Project.DAL
         }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<Clothes> Clothes { get; set; }
+        public DbSet<ClothesImage> ClothesImages { get; set; }
+        public DbSet<ClothesInformation> ClothesInformations { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

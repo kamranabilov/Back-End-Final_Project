@@ -8,7 +8,7 @@ namespace Back_End_Final_Project.Models
 {
     public class ClothesInformation:BaseEntity
     {
-        public string Desc { get; set; }
+        public string Infoormation { get; set; }
         public List<Clothes> Clothers { get; set; }
     }
 }
