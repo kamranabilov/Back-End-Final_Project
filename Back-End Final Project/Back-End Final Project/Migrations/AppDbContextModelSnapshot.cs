@@ -27,15 +27,12 @@ namespace Back_End_Final_Project.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte>("Quantity")
-                        .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 
@@ -49,10 +46,10 @@ namespace Back_End_Final_Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoriesId")
+                    b.Property<int>("CategoiesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Category")
+                    b.Property<int?>("CategoriesId")
                         .HasColumnType("int");
 
                     b.Property<int>("ClothesInformationId")
@@ -65,6 +62,7 @@ namespace Back_End_Final_Project.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
@@ -115,7 +113,7 @@ namespace Back_End_Final_Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Infoormation")
+                    b.Property<string>("Information")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -182,7 +180,7 @@ namespace Back_End_Final_Project.Migrations
                         .HasForeignKey("CategoriesId");
 
                     b.HasOne("Back_End_Final_Project.Models.ClothesInformation", "ClothesInformation")
-                        .WithMany("Clothers")
+                        .WithMany("Clothes")
                         .HasForeignKey("ClothesInformationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -39,7 +39,7 @@ namespace Back_End_Final_Project.Extensions
 
         public static bool ImageIsOkey(this IFormFile file, int mb)
         {
-            return file.Length / 1024 / 1024 / 1024 < mb && file.ContentType.Contains("image/");
+            return file.Length / 1024 / 1024 < mb && file.ContentType.Contains("image/");
         }
     }
 }

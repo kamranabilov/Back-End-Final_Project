@@ -1,7 +1,9 @@
 ﻿using Back_End_Final_Project.Models.Base;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,7 +12,7 @@ namespace Back_End_Final_Project.Models
     public class Clothes:BaseEntity
     {
         public string Image { get; set; }
-        [Required]
+        [Required, StringLength(maximumLength:20)]
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Text { get; set; }      
@@ -20,7 +22,7 @@ namespace Back_End_Final_Project.Models
         public int CategoiesId { get; set; }
         public Category Categories { get; set; }
         public List<ClothesImage> ClothesImages { get; set; }
-        //public List<ClothesColor> ClothesColors { get; set; }
-        //public List<ClothesSize> ClothesSizes { get; set; }
+        [NotMapped]
+        public IFormFile MainPhoto { get; set; }
     }
 }

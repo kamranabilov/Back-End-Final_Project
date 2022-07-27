@@ -11,10 +11,9 @@ namespace Back_End_Final_Project.Models
 {
     public class Category:BaseEntity
     {
-        [Required, StringLength(maximumLength:30)]
         public string Image { get; set; }
+        [Required, StringLength(maximumLength:30)]
         public string Name { get; set; }
-        public byte Quantity { get; set; }
         public List<Clothes> Clothes { get; set; }
         [NotMapped]
         public IFormFile Picture { get; set; }

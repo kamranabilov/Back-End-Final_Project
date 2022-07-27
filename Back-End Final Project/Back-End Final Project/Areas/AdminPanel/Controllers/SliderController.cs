@@ -38,7 +38,7 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
         public async Task<IActionResult> Create(Slider slider)
         {
             if(!ModelState.IsValid) return View();
-            if (!slider.Picture.ImageIsOkey(3))
+            if (!slider.Picture.ImageIsOkey(2))
             {
                 ModelState.AddModelError("Picture", "choose image file");
                 return View();
@@ -98,6 +98,14 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
             _context.Sliders.Remove(slider);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+            Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+            if (slider == null) return NotFound();
+            return View(slider);
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿@model Clothes
 
+@*@{ 
+    List<Clothes> related = ViewBag.Clothes;
+}*@
+
 @{
     ViewData["Title"] = "Detail";
 }
-
-
 <!-- Breadcrumb Start -->
 <div class="container-fluid">
     <div class="row px-xl-5">
@@ -45,7 +47,6 @@
                 </a>
             </div>
         </div>
-
         <div class="col-lg-7 h-auto mb-30">
             <div class="h-100 bg-light p-30">
                 <h3>Product Name Goes Here</h3>

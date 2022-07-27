@@ -8,6 +8,7 @@ namespace Back_End_Final_Project.Models
 {
     public class ClothesImage:BaseEntity
     {
+        //public string Image { get; set; }
         public string Name { get; set; }
         public string Alternative { get; set; }
         public bool IsMain { get; set; }
