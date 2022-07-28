@@ -1,5 +1,6 @@
 ﻿using Back_End_Final_Project.DAL;
 using Back_End_Final_Project.Models;
+using Back_End_Final_Project.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,6 +16,22 @@ namespace Back_End_Final_Project.Controllers
         {
             _context = context;
         }
+        public IActionResult Shop()
+        {
+            HomeVM homeVM = new HomeVM
+            {                
+                Clothes = _context.Clothes.Include(c => c.ClothesImages).ToList()
+            };
+            return View(homeVM);
+        }
+        public IActionResult ShopDetail()
+        {
+            HomeVM homeVM = new HomeVM
+            {
+                Clothes = _context.Clothes.Include(c => c.ClothesImages).ToList()
+            };
+            return View(homeVM);
+        }
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == 0 || id == null) return NotFound();
@@ -22,22 +39,14 @@ namespace Back_End_Final_Project.Controllers
                 .Include(c=>c.ClothesInformation)               
                 .Include(c => c.Categories)
                 .FirstOrDefaultAsync(c => c.Id == id);
-            //ViewBag.Clothes = await _context.Clothes.Include(c=>c.ClothesImages).ToListAsync();
             return View();
-            //// Relation Category start
-            //List<Clothes> clothess = new List<Clothes>();
-            //List<Clothes> clothesRange = new List<Clothes>();
-
-            //foreach (var item in clothess)
-            //{
-            //    clothes = _context.Clothes.Where(c => c.categories.Any(z => z.CategoryId == item.CategoryId))
-            //        .Include(c => c.ClothesImages).ToList();
-
-            //    clothesRange.AddRange(clothess);
-            //}
-            ////ViewBag.Clothes = clothesRange.Distinct().ToList();           
-            //return View(clothes);
-            //// Relation Category end
+           
         }
+        // Partial View
+        public async Task<IActionResult> Partial()
+        {
+            List<Clothes> clothes = await _context.Clothes.Include(c => c.ClothesImages).ToListAsync();
+            return PartialView("_ClothesPartialView", clothes);
+        } 
     }
 }

@@ -24,5 +24,9 @@ namespace Back_End_Final_Project.Models
         public List<ClothesImage> ClothesImages { get; set; }
         [NotMapped]
         public IFormFile MainPhoto { get; set; }
+        [NotMapped]
+        public List<IFormFile> Photos { get; set; }
+        [NotMapped]
+        public List<int> ImagesId { get; set; }
     }
 }

@@ -1,8 +1,10 @@
 using Back_End_Final_Project.DAL;
+using Back_End_Final_Project.Models;
 using Back_End_Final_Project.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +35,23 @@ namespace Back_End_Final_Project
             {
                 opt.UseSqlServer(_configuration.GetConnectionString("default"));
             });
+
+            services.AddIdentity<AppUser, IdentityRole>(opt=>
+            {
+                opt.User.RequireUniqueEmail = true;
+                opt.User.AllowedUserNameCharacters = "qwertyuiopasdfghjklzxcvbnm1234567890_";
+
+                opt.Password.RequiredUniqueChars = 3; // en azi 1 tekrar olunmayin herif olmalidir
+                opt.Password.RequireDigit = true;
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireLowercase = false;
+
+                opt.Lockout.MaxFailedAccessAttempts = 3;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                opt.Lockout.AllowedForNewUsers = true;
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
             services.AddScoped<LayoutService>();
 
