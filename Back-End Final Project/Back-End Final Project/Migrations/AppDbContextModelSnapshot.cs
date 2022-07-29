@@ -90,6 +90,49 @@ namespace Back_End_Final_Project.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Back_End_Final_Project.Models.BasketItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ClothesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ClothesId");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("BasketItems");
+                });
+
             modelBuilder.Entity("Back_End_Final_Project.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -196,6 +239,57 @@ namespace Back_End_Final_Project.Migrations
                     b.ToTable("ClothesInformations");
                 });
 
+            modelBuilder.Entity("Back_End_Final_Project.Models.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Color");
+                });
+
+            modelBuilder.Entity("Back_End_Final_Project.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("Back_End_Final_Project.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -216,6 +310,22 @@ namespace Back_End_Final_Project.Migrations
                         .HasFilter("[Key] IS NOT NULL");
 
                     b.ToTable("Settings");
+                });
+
+            modelBuilder.Entity("Back_End_Final_Project.Models.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Size");
                 });
 
             modelBuilder.Entity("Back_End_Final_Project.Models.Slider", b =>
@@ -379,6 +489,35 @@ namespace Back_End_Final_Project.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Back_End_Final_Project.Models.BasketItem", b =>
+                {
+                    b.HasOne("Back_End_Final_Project.Models.AppUser", "AppUser")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("Back_End_Final_Project.Models.Clothes", "Clothes")
+                        .WithMany()
+                        .HasForeignKey("ClothesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Back_End_Final_Project.Models.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Back_End_Final_Project.Models.Order", null)
+                        .WithMany("BasketItems")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("Back_End_Final_Project.Models.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Back_End_Final_Project.Models.Clothes", b =>
                 {
                     b.HasOne("Back_End_Final_Project.Models.Category", "Categories")
@@ -399,6 +538,13 @@ namespace Back_End_Final_Project.Migrations
                         .HasForeignKey("ClothesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Back_End_Final_Project.Models.Order", b =>
+                {
+                    b.HasOne("Back_End_Final_Project.Models.AppUser", "AppUser")
+                        .WithMany("Order")
+                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

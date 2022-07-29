@@ -310,8 +310,6 @@ E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final P
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Areas\AdminPanel\Views\Clothes\Create.cshtml.g.cs
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Areas\AdminPanel\Views\Clothes\Edit.cshtml.g.cs
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Areas\AdminPanel\Views\Clothes\Detail.cshtml.g.cs
-E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Clothes\Shop.cshtml.g.cs
-E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Clothes\ShopDetail.cshtml.g.cs
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -319,3 +317,6 @@ E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final P
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
+E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs
+E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Shop.cshtml.g.cs

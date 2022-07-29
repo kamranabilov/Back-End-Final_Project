@@ -13,7 +13,6 @@ namespace Back_End_Final_Project.Controllers
     public class HomeController : Controller
     {
         private AppDbContext _context;
-
         public HomeController(AppDbContext context)
         {
             _context = context;
@@ -26,7 +25,12 @@ namespace Back_End_Final_Project.Controllers
                 Categories = _context.Categories.Include(c => c.Clothes).ToList(),
                 Clothes = _context.Clothes.Include(c => c.ClothesImages).ToList()
             };
-             return View(homeVM);
+            return View(homeVM);
+        }
+
+        public IActionResult ContactUs()
+        {
+            return View();
         }
     }
 }

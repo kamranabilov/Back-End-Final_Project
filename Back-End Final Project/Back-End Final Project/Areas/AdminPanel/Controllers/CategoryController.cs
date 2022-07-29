@@ -64,7 +64,7 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
             Category existed = _context.Categories.FirstOrDefault(c => c.Id == id);
             if (!ModelState.IsValid) return View(existed);
             if (existed == null) return NotFound();
-            bool RepeatCategory = _context.Categories.Any(c =>c.Id!=existed.Id&& c.Name == NewCategory.Name);
+            bool RepeatCategory = _context.Categories.Any(c => c.Id !=existed.Id && c.Name == NewCategory.Name);
             if (RepeatCategory)
             {
                 ModelState.AddModelError("Name", "can not dubilcate name");

@@ -19,6 +19,8 @@ namespace Back_End_Final_Project.DAL
         public DbSet<ClothesImage> ClothesImages { get; set; }
         public DbSet<ClothesInformation> ClothesInformations { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var item in modelBuilder.Model.GetEntityTypes()

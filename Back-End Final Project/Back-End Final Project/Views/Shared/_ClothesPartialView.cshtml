@@ -7,10 +7,10 @@
                     <img class="img-fluid w-100" src="~/assets/img/@clothes.ClothesImages.FirstOrDefault(c=>c.IsMain==true).Name" 
                          alt="@clothes.ClothesImages.FirstOrDefault(c=>c.IsMain==true)?.Alternative">
                     <div class="product-action">
-                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" asp-controller="clothes" asp-action="addbasket" asp-route-id="@clothes.Id"><i class="fa fa-shopping-cart"></i></a>
                         <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                         <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                        <a class="btn btn-outline-dark btn-square" asp-controller="clothes" asp-action="detail" asp-route-id="@clothes.Id"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
                 <div class="text-center py-4">

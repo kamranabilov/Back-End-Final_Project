@@ -101,10 +101,11 @@ namespace Back_End_Final_Project.Controllers
             return Json(User.Identity.IsAuthenticated);
         }
 
-        //public async Task CreateRoles()
-        //{
-        //    await _roleManager.CreateAsync(new IdentityRole("Admin"));
-        //    await _roleManager.CreateAsync(new IdentityRole("SuperAdmin"));
-        //}
+        public async Task CreateRoles()
+        {
+            await _roleManager.CreateAsync(new IdentityRole("Member"));
+            await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            await _roleManager.CreateAsync(new IdentityRole("SuperAdmin"));
+        }
     }
 }
