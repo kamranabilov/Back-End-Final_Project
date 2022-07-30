@@ -21,17 +21,13 @@ namespace Back_End_Final_Project.Services
             _context = context;
             _http = http;
         }
-
         public List<Setting> GetSettings()
         {
             List<Setting> settings = _context.Settings.ToList();
             return settings;
         }
-
         public LayoutBasketVM GetBasket()
-        {
-            //BasketVM basket = new BasketVM();
-
+        {            
             string basketStr = _http.HttpContext.Request.Cookies["Basket"];
             if (!string.IsNullOrEmpty(basketStr))
             {
@@ -42,7 +38,7 @@ namespace Back_End_Final_Project.Services
                 {
                     Clothes existed = _context.Clothes.Include(c=>c.ClothesImages)
                         .FirstOrDefault(c => c.Id == cookie.Id);
-                    if (existed != null)
+                    if (existed == null)
                     {
                         basket.BasketCookieItemVMs.Remove(cookie);
                         continue;

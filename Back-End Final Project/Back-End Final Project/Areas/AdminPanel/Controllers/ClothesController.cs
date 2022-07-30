@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
-    [Authorize (Roles ="Admin, Superadmin")]
+    //[Authorize(Roles = "Admin, Superadmin")]
     public class ClothesController : Controller
     {
         private readonly AppDbContext _context;

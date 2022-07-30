@@ -38,9 +38,17 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a asp-controller="account" asp-action="login" class="dropdown-item" type="submit">Sign in</a>
-                            <a asp-controller="account" asp-action="register" class="dropdown-item" type="submit">Sign up</a>
-                            <a asp-controller="account" asp-action="logout" class="dropdown-item" type="submit">Logout</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="account" asp-action="logout" class="dropdown-item" type="submit">Logout</a>
+                                @Html.ActionLink(User.Identity.Name, "Manager", "Account", routeValues: null, htmlAttributes:
+                               new {@class = "username", title="Manager"})
+                            }
+                            else
+                            {
+                                <a asp-controller="account" asp-action="login" class="dropdown-item" type="submit">Sign in</a>
+                                <a asp-controller="account" asp-action="register" class="dropdown-item" type="submit">Sign up</a>
+                            }
                         </div>
                     </div>
                     <div class="btn-group mx-2">
@@ -116,7 +124,7 @@
                                 <a href="" class="dropdown-item">Baby's Dresses</a>
                             </div>
                         </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
+                        <a asp-controller="shop" asp-action="shop" asp-route-id="" class="nav-item nav-link">Shirts</a>
                         <a href="" class="nav-item nav-link">Jeans</a>
                         <a href="" class="nav-item nav-link">Swimwear</a>
                         <a href="" class="nav-item nav-link">Sleepwear</a>
@@ -145,7 +153,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
+                                    <a asp-controller="Cart" asp-action="Cart" class="dropdown-item">Shopping Cart</a>
                                     <a asp-controller="Order" asp-action="checkout" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
@@ -156,7 +164,7 @@
                                 <i class="fas fa-heart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                             </a>
-                            <a href="" class="btn px-0 ml-3">
+                            <a  asp-controller="Cart" asp-action="AddBasket" asp-route-id="" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                             </a>
