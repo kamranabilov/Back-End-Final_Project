@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace Back_End_Final_Project.Controllers
 {
     public class AccountController : Controller
@@ -22,12 +21,10 @@ namespace Back_End_Final_Project.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
         }
-
         public IActionResult Register()
         {
             return View();
         }
-
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Register(RegisterVM register)
@@ -89,18 +86,15 @@ namespace Back_End_Final_Project.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-
         public JsonResult ShowAuthentication()
         {
             return Json(User.Identity.IsAuthenticated);
         }
-
         //public async Task CreateRoles()
         //{
         //    await _roleManager.CreateAsync(new IdentityRole("Member"));

@@ -23,12 +23,14 @@ namespace Back_End_Final_Project.Controllers
         {
             return View();
         }        
-                [HttpPost]
-            public async Task<IActionResult> Index(ContactUs contactUs)
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Index(ContactUs contactUs)
+        {
+            if (User.Identity.IsAuthenticated)
             {
-                if (User.Identity.IsAuthenticated)
-                {
-                    if (!ModelState.IsValid) return View();
+                if (!ModelState.IsValid) return View();
                     AppUser user = await _userManager.FindByNameAsync(contactUs.Name);
                     if (user != null)
                     {
@@ -47,9 +49,9 @@ namespace Back_End_Final_Project.Controllers
                     {
                         ModelState.AddModelError("Contact", "Erorr Msj");
                         return View();
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }        
+                    }                
+            }
+            return RedirectToAction(nameof(Index));
+        }        
     }
 }

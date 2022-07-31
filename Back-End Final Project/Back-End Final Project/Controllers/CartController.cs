@@ -112,7 +112,6 @@ namespace Back_End_Final_Project.Controllers
             if (id == 0 || id == null) return NotFound();
             string basketStr = HttpContext.Request.Cookies["Basket"];
             Clothes clothes = _context.Clothes.FirstOrDefault(c => c.Id == id);
-
             BasketVM basket;
             if (basketStr == null)
             {
@@ -201,11 +200,11 @@ namespace Back_End_Final_Project.Controllers
         }
         public async Task<IActionResult> RemoveFromClothes(int? id)
         {
-            if (id == null || id == 0) NotFound();           
+            if (id == null || id == 0) NotFound();
             Clothes clothes = await _context.Clothes.FirstOrDefaultAsync(c => c.Id == id);
-            if (clothes == null) NotFound();           
+            if (clothes == null) NotFound();
             string basketStr = HttpContext.Request.Cookies["Basket"];
-            if (string.IsNullOrEmpty(basketStr)) NotFound();           
+            if (string.IsNullOrEmpty(basketStr)) NotFound();
             BasketVM basket = JsonConvert.DeserializeObject<BasketVM>(basketStr);
             BasketCookieItemVM existed = basket.BasketCookieItemVMs.FirstOrDefault(c => c.Id == id);
             basket.BasketCookieItemVMs.Remove(existed);

@@ -23,15 +23,12 @@ namespace Back_End_Final_Project.Controllers
         }
         public async Task<IActionResult> Detail(int? id)
         {
-
             if (id == 0 || id == null) return NotFound();
             Clothes clothes = await _context.Clothes.Include(c =>c.ClothesImages)
                 .Include(c=>c.ClothesInformation)                               
                 .FirstOrDefaultAsync(c => c.Id == id);
-            return View(clothes);
-           
+            return View(clothes);           
         }        
-
     // Partial View
     public async Task<IActionResult> Partial()
         {

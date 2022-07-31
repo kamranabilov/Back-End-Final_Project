@@ -31,8 +31,6 @@ namespace Back_End_Final_Project.Controllers
                 Clothes = _context.Clothes.Include(c => c.ClothesImages).ToList()
             };
             return View(homeVM);
-        }
-
-       
+        }       
     }
 }
