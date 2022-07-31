@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Detail";
 }
-@{ 
+@{
     int count = 0;
 }
 <!-- Shop Detail Start -->
@@ -10,14 +10,14 @@
     <div class="row px-xl-5">
         <div class="col-lg-5 mb-30">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner bg-light">                    
+                <div class="carousel-inner bg-light">
                     @foreach (ClothesImage clothesImage in Model.ClothesImages)
-        {
-            <div class="carousel-item @(count == 1? "active" : "")">
-                <img class="w-100 h-100" src="~/assets/img/@clothesImage.Name" alt="Image">
-            </div>
-            count++;
-        }
+                    {
+                        <div class="carousel-item @(count == 1? "active" : "")">
+                            <img class="w-100 h-100" src="~/assets/img/@clothesImage.Name" alt="Image">
+                        </div>
+                        count++;
+                    }
                 </div>
                 <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                     <i class="fa fa-2x fa-angle-left text-dark"></i>
@@ -49,23 +49,7 @@
                     <form>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="size-1" name="size">
-                            <label class="custom-control-label" for="size-1">XS</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-2" name="size">
-                            <label class="custom-control-label" for="size-2">S</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-3" name="size">
-                            <label class="custom-control-label" for="size-3">M</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-4" name="size">
-                            <label class="custom-control-label" for="size-4">L</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-5" name="size">
-                            <label class="custom-control-label" for="size-5">XL</label>
+                            <label class="custom-control-label" for="size-1">M</label>
                         </div>
                     </form>
                 </div>
@@ -145,10 +129,12 @@
                     <div class="tab-pane fade show active" id="tab-pane-1">
                         <h4 class="mb-3">Product Description</h4>
                         <p>@Model.Description</p>
-                        <p> Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. 
-                        Gubergren amet amet labore sadipscing clita clita diam clita.
-                        Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum.
-                        Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
+                        <p>
+                            Amet dolore tempor consetetur sed lorem dolor sit lorem tempor.
+                            Gubergren amet amet labore sadipscing clita clita diam clita.
+                            Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum.
+                            Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.
+                        </p>
                     </div>
                     <div class="tab-pane fade" id="tab-pane-2">
                         <h4 class="mb-3">Additional Information</h4>

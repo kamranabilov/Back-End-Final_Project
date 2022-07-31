@@ -124,15 +124,17 @@
                                 <a href="" class="dropdown-item">Baby's Dresses</a>
                             </div>
                         </div>
-                        <a asp-controller="shop" asp-action="shop" asp-route-id="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
+                        @foreach (Category category in layoutservice.GetCategories())
+                        {
+                            if (category.Clothes==null)
+                            {
+                                <a asp-controller="shop" asp-action="Empty" class="nav-item nav-link">@category.Name</a>
+                            }
+                            else
+                            {
+                                <a asp-controller="shop" asp-action="shop" asp-route-id="@category.Id" class="nav-item nav-link">@category.Name</a>
+                            }
+                        }
                     </div>
                 </nav>
             </div>
@@ -157,16 +159,18 @@
                                     <a asp-controller="Order" asp-action="checkout" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
-                            <a asp-controller="home" asp-action="contactus" class="nav-item nav-link">Contact</a>
+                            <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
                                 <i class="fas fa-heart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                             </a>
-                            <a  asp-controller="Cart" asp-action="AddBasket" asp-route-id="" class="btn px-0 ml-3">
+                            <a  asp-controller="Cart" asp-action="Cart" asp-route-id="" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
+                                    @(layoutservice.GetBasket()!=null ? layoutservice.GetBasket().BasketItemVMs.Count.ToString(): "0")
+                                </span>
                             </a>
                         </div>
                     </div>

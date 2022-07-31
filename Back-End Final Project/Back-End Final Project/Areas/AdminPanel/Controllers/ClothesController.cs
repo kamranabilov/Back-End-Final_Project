@@ -18,7 +18,8 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
     public class ClothesController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;       
+
         public ClothesController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
@@ -29,7 +30,8 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
             List<Clothes> model = _context.Clothes
                 .Include(c => c.ClothesInformation)
                 .Include(c => c.Categories)
-                .Include(c => c.ClothesImages).ToList();
+                .Include(c => c.ClothesImages).
+                ToList();
             return View(model);
         }
         public IActionResult Create()
@@ -44,23 +46,24 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
         {
                 ViewBag.Information = _context.ClothesInformations.ToList();
                 ViewBag.Categories = _context.Categories.ToList();
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+            if (!ModelState.IsValid) return View();           
             if (clothes.MainPhoto == null || clothes.Photos == null)
-            {
-               
+            {               
                 ModelState.AddModelError(string.Empty, "must choose 1 main photo");
                 return View();
             }
             if (!clothes.MainPhoto.ImageIsOkey(2))
             {
-
                 ModelState.AddModelError(string.Empty, "choose image file");
                 return View();
             }
+            clothes.Image = await FileExtension.FileCreate(clothes.MainPhoto, _env.WebRootPath, "assets/img");
 
+            ClothesImage mainimage = new ClothesImage
+            {
+                IsMain = true,
+                Name = await FileExtension.FileCreate(clothes.MainPhoto, _env.WebRootPath, "assets/img")
+            };
             clothes.ClothesImages = new List<ClothesImage>();
             TempData["Filename"] = "";
             List<IFormFile> removeable = new List<IFormFile>();
@@ -75,7 +78,7 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
                 ClothesImage otherphoto = new ClothesImage
                 {
                     Name = await photo.FileCreate(_env.WebRootPath, "assets/img"),
-                    IsMain = false,
+                    IsMain = true,
                     Alternative = clothes.Name,
                     Clothes = clothes
                 };
@@ -129,7 +132,6 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || id == 0) return NotFound();
@@ -139,7 +141,6 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null || id == 0) return NotFound();

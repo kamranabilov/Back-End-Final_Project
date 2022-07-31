@@ -42,7 +42,7 @@
             <select class="form-control" asp-for="ClothesInformationId"
         asp-items="@(new SelectList(ViewBag.Information,"Id","Information"))"></select>
         </div>
-        <div>
+        <div enctype="multipart/form-data">
             <label>Clothes Category:</label><br />
             <select class="form-control" asp-for="CategoiesId"
                     asp-items="@(new SelectList(ViewBag.Categories,"Id","Name"))"></select>

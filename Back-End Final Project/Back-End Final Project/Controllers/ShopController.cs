@@ -19,13 +19,15 @@ namespace Back_End_Final_Project.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Shop(int? id)
+        public async Task<IActionResult> Shop(int? id, int page=1)
         {
             if (id != 0 || id != null)
             {
                 Category category = await _context.Categories
-                    .Include(c => c.Clothes).ThenInclude(c => c.ClothesImages)
+                    .Include(c => c.Clothes).ThenInclude(c => c.ClothesImages).Skip((page - 1) * 4).Take(4)
                     .FirstOrDefaultAsync(x => x.Id == id);
+                ViewBag.CurentPage = page;
+                ViewBag.TotalPage = Math.Ceiling((decimal)_context.Clothes.Count() / 4);
                 if (category != null)
                 {
                     if (category.Clothes.Count() != 0)
@@ -50,6 +52,10 @@ namespace Back_End_Final_Project.Controllers
             return View(homeVM);
             //List<Clothes> clothes = await _context.Clothes.Include(x => x.ClothesImages).ToListAsync();
             //return View(clothes);          
+        }
+        public async Task<IActionResult> Empty(int? id)
+        {          
+            return View();
         }
     }
 }

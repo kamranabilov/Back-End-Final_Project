@@ -31,8 +31,7 @@ namespace Back_End_Final_Project.Controllers
             Clothes clothes = await _context.Clothes.FirstOrDefaultAsync(c => c.Id == id);
             if (id == null || id == 0) return NotFound();
 
-            if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-
+            if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
             {
                 AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
                 if (user == null) return NotFound();
@@ -46,7 +45,7 @@ namespace Back_End_Final_Project.Controllers
                         AppUser = user,
                         Quantity = 1,
                         Price = clothes.Price
-                    };
+                    }; 
                     _context.BasketItems.Add(existed);
                 }
                 else
@@ -92,12 +91,7 @@ namespace Back_End_Final_Project.Controllers
                         basket.TotalPrice += clothes.Price;
                         existed.Quantity++;
                     }
-                }
-
-                foreach (BasketCookieItemVM cookie in basket.BasketCookieItemVMs)
-                {
-
-                }
+                }               
                 BasketStr = JsonConvert.SerializeObject(basket);
 
                 HttpContext.Response.Cookies.Append("Basket", BasketStr);
@@ -107,14 +101,12 @@ namespace Back_End_Final_Project.Controllers
 
             return RedirectToAction("cart", "cart");
         }
-
         public IActionResult ShowBasket()
         {
             if (HttpContext.Request.Cookies["Basket"] == null) return NotFound();
             BasketVM basket = JsonConvert.DeserializeObject<BasketVM>(HttpContext.Request.Cookies["Basket"]);
             return Json(basket);
         }
-
         public IActionResult Plus(int? id)
         {
             if (id == 0 || id == null) return NotFound();

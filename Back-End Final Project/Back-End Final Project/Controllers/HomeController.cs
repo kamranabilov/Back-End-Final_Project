@@ -1,6 +1,7 @@
 ﻿using Back_End_Final_Project.DAL;
 using Back_End_Final_Project.Models;
 using Back_End_Final_Project.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,13 +10,17 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Back_End_Final_Project.Controllers
-{
+{   
+    
     public class HomeController : Controller
     {
         private AppDbContext _context;
-        public HomeController(AppDbContext context)
+        private readonly UserManager<AppUser> _userManager;
+
+        public HomeController(AppDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -28,9 +33,6 @@ namespace Back_End_Final_Project.Controllers
             return View(homeVM);
         }
 
-        public IActionResult ContactUs()
-        {
-            return View();
-        }
+       
     }
 }

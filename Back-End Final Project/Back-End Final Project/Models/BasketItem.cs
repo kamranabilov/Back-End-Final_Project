@@ -13,9 +13,9 @@ namespace Back_End_Final_Project.Models
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public int ColorId { get; set; }
-        public Color Color { get; set; }
+        //public Color Color { get; set; }
         public int SizeId { get; set; }
-        public Size Size { get; set; }       
+        //public Size Size { get; set; }       
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
     }

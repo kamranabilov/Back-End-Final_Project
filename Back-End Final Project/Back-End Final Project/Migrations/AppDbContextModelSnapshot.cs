@@ -124,11 +124,7 @@ namespace Back_End_Final_Project.Migrations
 
                     b.HasIndex("ClothesId");
 
-                    b.HasIndex("ColorId");
-
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("SizeId");
 
                     b.ToTable("BasketItems");
                 });
@@ -239,20 +235,28 @@ namespace Back_End_Final_Project.Migrations
                     b.ToTable("ClothesInformations");
                 });
 
-            modelBuilder.Entity("Back_End_Final_Project.Models.Color", b =>
+            modelBuilder.Entity("Back_End_Final_Project.Models.ContactUs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
-                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Color");
+                    b.ToTable("ContactUss");
                 });
 
             modelBuilder.Entity("Back_End_Final_Project.Models.Order", b =>
@@ -310,22 +314,6 @@ namespace Back_End_Final_Project.Migrations
                         .HasFilter("[Key] IS NOT NULL");
 
                     b.ToTable("Settings");
-                });
-
-            modelBuilder.Entity("Back_End_Final_Project.Models.Size", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Size");
                 });
 
             modelBuilder.Entity("Back_End_Final_Project.Models.Slider", b =>
@@ -501,21 +489,9 @@ namespace Back_End_Final_Project.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Back_End_Final_Project.Models.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Back_End_Final_Project.Models.Order", null)
                         .WithMany("BasketItems")
                         .HasForeignKey("OrderId");
-
-                    b.HasOne("Back_End_Final_Project.Models.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Back_End_Final_Project.Models.Clothes", b =>

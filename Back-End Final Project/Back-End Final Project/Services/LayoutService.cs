@@ -26,6 +26,15 @@ namespace Back_End_Final_Project.Services
             List<Setting> settings = _context.Settings.ToList();
             return settings;
         }
+        public List<Category> GetCategories()
+        {
+            List<Category> categories = _context.Categories.ToList();
+            if (!(categories.Count > 0))
+            {
+                return null;
+            }
+            return categories;                     
+        }
         public LayoutBasketVM GetBasket()
         {            
             string basketStr = _http.HttpContext.Request.Cookies["Basket"];

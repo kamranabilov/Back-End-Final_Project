@@ -30,9 +30,10 @@ namespace Back_End_Final_Project.Controllers
                 .FirstOrDefaultAsync(c => c.Id == id);
             return View(clothes);
            
-        }
-        // Partial View
-        public async Task<IActionResult> Partial()
+        }        
+
+    // Partial View
+    public async Task<IActionResult> Partial()
         {
             List<Clothes> clothes = await _context.Clothes.Include(c => c.ClothesImages).ToListAsync();
             return PartialView("_ClothesPartialView", clothes);

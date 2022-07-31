@@ -318,6 +318,7 @@ E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final P
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
-E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Shop.cshtml.g.cs
 E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Cart.cshtml.g.cs
+E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Empty.cshtml.g.cs
+E:\3.Asp.Net.Core\Back-End Final Project\Back-End Final Project\Back-End Final Project\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs

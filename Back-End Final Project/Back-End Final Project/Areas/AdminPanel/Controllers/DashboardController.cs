@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Back_End_Final_Project.DAL;
+using Back_End_Final_Project.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +12,18 @@ namespace Back_End_Final_Project.Areas.AdminPanel.Controllers
 
     public class DashboardController : Controller
     {
+        private readonly AppDbContext _context;
+
+        public DashboardController(AppDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            return View();
+            List<ContactUs> contacts = _context.ContactUss.ToList();
+            return View(contacts);
         }
+
+
     }
 }
